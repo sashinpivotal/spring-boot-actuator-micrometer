@@ -30,9 +30,9 @@ tar xvfz prometheus-*.tar.gz
 cd prometheus-*
 ```
 
--   Configure `prometheus.yml` assuming you are running 
-    your target application is rinning on port `8080` and
-    actuator base path is `actuator`
+-   Configure `prometheus.yml` assuming  
+    your target application is running on port `8080` and
+    actuator base path is the default `actuator`
 
 ```
     ...
@@ -43,7 +43,7 @@ cd prometheus-*
     - targets: ['localhost:8080']
 ```
 
--   Run Prometheus
+-   Run Prometheus server
 
 ```
 ./prometheus --config.file=prometheus.yml
@@ -60,8 +60,12 @@ ab -n 1000000 http://localhost:8080/actuator
 ### Access Prometheus UI
 
 -   Using your browser, go to [http://localhost:9090](http://localhost:9090)
--   Select metic you want to monitor from `- insert metric at curos -` drop-down menu, for example, `http_server_requests_sessions_count` and click `Execute` button
--   Click `Graph` tab and observe that graph represents the traffic
+-   Select metic you want to monitor from 
+    `- insert metric at curos -` drop-down menu, 
+    for example, `http_server_requests_sessions_count` 
+    and click `Execute` button
+-   Click `Graph` tab and observe that graph represents 
+    the traffic
 
 ### References
 
