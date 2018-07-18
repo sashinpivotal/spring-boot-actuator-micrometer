@@ -6,10 +6,10 @@
 -   Add `Micrometer Prometheus registry` dependency 
 
 ```
-		<dependency>
-			<groupId>io.micrometer</groupId>
-			<artifactId>micrometer-registry-prometheus</artifactId>
-		</dependency>
+<dependency>
+	<groupId>io.micrometer</groupId>
+	<artifactId>micrometer-registry-prometheus</artifactId>
+</dependency>
 ```
 
 -   Add the following the the `application.properties` file
