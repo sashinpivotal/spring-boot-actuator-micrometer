@@ -15,10 +15,13 @@
 -   Add the following the the `application.properties` file
 
 ```
-endpoints.prometheus.enabled=true
+management.endpoints.prometheus.enabled=true
 ```
 
 -   Run your target Spring Boot application
+-   Access [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus) and observe
+    that metrics data is now visible in the format
+    Prometheus expects
 
 ### Download, configure, and run Prometheus server
 
@@ -62,7 +65,7 @@ ab -n 1000000 http://localhost:8080/actuator
 -   Using your browser, go to [http://localhost:9090](http://localhost:9090)
 -   Select metic you want to monitor from 
     `- insert metric at curos -` drop-down menu, 
-    for example, `http_server_requests_sessions_count` 
+    for example, `http_server_requests_seconds_count` 
     and click `Execute` button
 -   Click `Graph` tab and observe that graph represents 
     the traffic
