@@ -72,7 +72,7 @@ ab -n 1000000 http://localhost:8080/actuator
 
 -   Using your browser, go to [http://localhost:9090](http://localhost:9090)
 -   Select metic you want to monitor from 
-    `- insert metric at curos -` drop-down menu, 
+    `- insert metric at cursor -` drop-down menu, 
     for example, `http_server_requests_seconds_count` 
     and click `Execute` button
 -   Click `Graph` tab and observe that graph represents 
