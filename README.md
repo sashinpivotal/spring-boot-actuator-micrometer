@@ -22,8 +22,16 @@ management.endpoints.prometheus.enabled=true
 -   Access [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus) and observe
     that metrics data is now visible in the format
     Prometheus expects
+    
+### Run Prometheus server on Docker
 
-### Download, configure, and run Prometheus server
+-   Use the provided `prometheus.yml` with the Prometheus docker image
+
+```
+docker run -p 9090:9090 -v prometheus.yml prom/prometheus
+```
+
+### Download, configure, and run Prometheus server (If Docker option above is not working for you)
 
 -   Download Prometheus from [Prometheus website](https://prometheus.io/download/) 
 -   Unzip it as following
