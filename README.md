@@ -38,7 +38,7 @@ docker run -p 9090:9090 -v prometheus.yml prom/prometheus
 
 ```
 tar xvfz prometheus-*.tar.gz
-cd prometheus-*
+cd prometheus-<version>-<
 ```
 
 -   Configure `prometheus.yml` assuming  
