@@ -3,63 +3,75 @@
 
 ### Configure your Spring Boot target application
 
--   Add `Micrometer Prometheus registry` dependency 
+-   Add `Micrometer Prometheus registry` dependency to either
+    `pom.xml` or `build.gradle`
 
-```
-<dependency>
-	<groupId>io.micrometer</groupId>
-	<artifactId>micrometer-registry-prometheus</artifactId>
-</dependency>
-```
+    ```
+    <dependency>
+	    <groupId>io.micrometer</groupId>
+	    <artifactId>micrometer-registry-prometheus</artifactId>
+    </dependency>
+    ```
+    
+    ```
+    compile 'io.micrometer:micrometer-registry-prometheus'
+    ```
 
 -   Add the following the the `application.properties` file
 
-```
-management.endpoints.prometheus.enabled=true
-```
+    ```
+    management.endpoints.prometheus.enabled=true
+    ```
 
 -   Run your target Spring Boot application
 -   Access [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus) and observe
     that metrics data is now visible in the format
     Prometheus expects
     
+### Run Prometheus server on Docker
 
-### Download, configure, and run Prometheus server 
+-   Use the provided `prometheus.yml` with the Prometheus docker image
+
+    ```
+    docker run -p 9090:9090 -v prometheus.yml prom/prometheus
+    ```
+
+### Download, configure, and run Prometheus server (If Docker option above is not working for you)
 
 -   Download Prometheus from [Prometheus website](https://prometheus.io/download/) 
 -   Unzip it as following
 
-```
-tar xvfz prometheus-*.tar.gz
-cd prometheus-<version>-<
-```
+    ```
+    tar xvfz prometheus-*.tar.gz
+    cd prometheus-<version>-<arch>
+    ```
 
 -   Configure `prometheus.yml` assuming  
     your target application is running on port `8080` and
     actuator base path is the default `actuator`
 
-```
+    ```
     ...
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     metrics_path: /actuator/prometheus
     static_configs:
     - targets: ['localhost:8080']
-```
+    ```
 
 -   Run Prometheus server
 
-```
-./prometheus --config.file=prometheus.yml
-```
+    ```
+    ./prometheus --config.file=prometheus.yml
+    ```
 
 ### Generate some traffic to the appliation
 
 -   Using a tool such as [ApacheBench](https://httpd.apache.org/docs/2.4/programs/ab.html), access your target application
 
-```
-ab -n 1000000 http://localhost:8080/actuator
-```
+    ```
+    ab -n 1000000 http://localhost:8080/actuator
+    ```
 
 ### Access Prometheus UI
 
