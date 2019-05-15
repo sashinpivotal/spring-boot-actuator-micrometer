@@ -17,12 +17,6 @@
     compile 'io.micrometer:micrometer-registry-prometheus'
     ```
 
--   Add the following the the `application.properties` file
-
-    ```
-    management.endpoints.prometheus.enabled=true
-    ```
-
 -   Run your target Spring Boot application
 -   Access [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus) and observe
     that metrics data is now visible in the format
