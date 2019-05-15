@@ -16,6 +16,17 @@
     ```
     compile 'io.micrometer:micrometer-registry-prometheus'
     ```
+    
+-   If your endpoints are secured, give access permission 
+    to the `actuator/prometheus` endpoint 
+
+    ```
+    http.authorizeRequests()
+         .requestMatchers(EndpointRequest.to("prometheus")).permitAll()
+         .anyRequest().authenticated()
+         .and()
+    .httpBasic();
+    ```
 
 -   Run your target Spring Boot application
 -   Access [http://localhost:8080/actuator/prometheus](http://localhost:8080/actuator/prometheus) and observe
