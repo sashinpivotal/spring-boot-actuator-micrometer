@@ -22,10 +22,12 @@
 
     ```
     http.authorizeRequests()
-         .requestMatchers(EndpointRequest.to("prometheus")).permitAll()
-         .anyRequest().authenticated()
-         .and()
-    .httpBasic();
+             .requestMatchers(EndpointRequest.to("health", "info", "prometheus")).permitAll()
+             .requestMatchers(EndpointRequest.to("conditions")).hasRole("ADMIN")
+             .requestMatchers(EndpointRequest.toAnyEndpoint()).hasRole("ACTUATOR")
+             .anyRequest().authenticated()
+             .and()
+        .httpBasic();
     ```
 
 -   Run your target Spring Boot application
