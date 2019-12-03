@@ -10,12 +10,11 @@
     <dependency>
 	    <groupId>io.micrometer</groupId>
 	    <artifactId>micrometer-registry-prometheus</artifactId>
-	    <version>1.1.0</version>
     </dependency>
     ```
     
     ```
-    compile 'io.micrometer:micrometer-registry-prometheus:1.1.0'
+    compile 'io.micrometer:micrometer-registry-prometheus'
     ```
     
 -   If your endpoints are secured, give access permission 
